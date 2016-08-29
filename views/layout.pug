@@ -18,13 +18,13 @@ html
            li
              a.navbar-brand(href='/') Home
            li
-             a(href='/new') Add Book
+             a(href='/books/add') Add Book
          form.navbar-form.navbar-left(action="/", method="get")
            .form-group
              input.form-control(type="text", name="search_query", placeholder="Search...")
              button.btn.btn-default(type="submit", value="Submit") Submit
          ul.nav.navbar-nav.navbar-right
-              a.navbar-brand(href='/user') User
+              a.navbar-brand(href='/users') User
       .clearfix
 
     block content
