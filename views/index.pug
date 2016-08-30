@@ -1,5 +1,31 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .jumbotron
+      .container
+        h1 Welcome to Learner's Guild Library
+        p Created by Nico and James in week 8. This website enables guilders the ability to checkout books in the Oakland library.
+          a.btn.btn-primary.btn-lg(role='button') Learn more &raquo;
+
+  .container
+      // Example row of columns
+      .row
+        .col-md-4
+          h2 Book Lists
+          p There are a number of books available in the LG library.
+          p
+            a.btn.btn-default(href='/books', role='button') View details &raquo;
+        .col-md-4
+          h2 Checkout Books
+          p Let other Guilders know which books are available.
+          p
+            a.btn.btn-default(href='#', role='button') View details &raquo;
+        .col-md-4
+          h2 Responsive
+          p View books on your phone or on your computer.
+          p
+            a.btn.btn-default(href='#', role='button') View details &raquo;
+      hr
+      footer
+        p &copy; SioNo 2014
+  // container
