@@ -9,7 +9,6 @@ router.get( '/', (request, response) => {
     email: 'john@learnersguild.org',
     password: 'password' }
   ).then( user => {
-    console.log( user )
     response.send( user )
   })
 })

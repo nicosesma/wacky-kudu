@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1= book.title
+
+  img(src=`${book.cover}`, alt="Book Cover", style="height: 250px; width: 150px;")
+
+  div
+    h5= Description
+    p= book.description
+
+  a(href=`/books/edit/${book.id}`) Edit Book

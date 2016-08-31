@@ -2,3 +2,10 @@ extends layout
 
 block content
   h1 Edit Book
+
+  form(action=`/books/${book.id}`, method="post") Edit This Book!
+    input(type="text" name="title", value=`${book.title}`)
+    input(type="text" name="description", value=`${book.description}`)
+    input(type="text" name="cover", value=`${book.cover}`)
+
+    input(type="submit", value="Submit!")
