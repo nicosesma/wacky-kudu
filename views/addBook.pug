@@ -2,3 +2,10 @@ extends layout
 
 block content
   h1 Add Book
+
+  form(action="/books", method="post") Add A Book!
+    input(type="text" name="title", placeholder="Book Title")
+    input(type="text" name="description", placeholder="Description")
+    input(type="text" name="cover", placeholder="Cover url")
+
+    input(type="submit", value="Submit your book!")
