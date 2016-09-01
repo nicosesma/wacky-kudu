@@ -3,16 +3,19 @@ extends ../layout
 block content
   h1= book.title
 
-  img(src=`${book.cover}`, alt="Book Cover", style="height: 250px; width: 150px;")
+  .media
+    .media-left
+      img(src=`${book.cover}`, alt="Book Cover", style="height: 250px; width: 150px;")
 
-  div
-    h5= Description
-    p= book.description
+    .media-body
+      h5 Authors
+      p= book.authors.map( a => a.name ).join( ', ' )
 
-  a(href=`/books/edit/${book.id}`) Edit Book
+      h5 Genres
+      p= book.genres.map( g => g.name ).join( ', ' )
 
-  .clearfix
-    form.form-horizontal(method='get', id="delete-form" action=`/books/delete/${book.id}`)
-      fieldset
-        div
-          input.form-control(type='submit' value="Delete Book")
+      h5 Description
+      p= book.description
+
+      a.btn.btn-default(href=`/books/edit/${book.id}`) Edit Book
+      a.btn.btn-danger(href=`/books/delete/${book.id}`) Delete Book

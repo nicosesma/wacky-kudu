@@ -36,9 +36,9 @@ router.post('/', (request, response) => {
 })
 
 router.get('/:id', (request, response) => {
-  const Book = request.app.get('models').Book
+  const { Book, Genre, Author } = request.app.get('models')
 
-  Book.findById(request.params.id)
+  Book.findById(request.params.id, { include: [ Author, Genre ] })
     .then( book => response.render('books/details', { book }))
     .catch( error => response.send({ error, message: error.message }) )
 })
