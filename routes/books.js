@@ -36,7 +36,7 @@ router.get('/:id', (request, response) => {
 // updating book details
 router.get('/edit/:id', (request, response) => {
   const Book = request.app.get('models').Book
-  Book.findById(request.params.id)
+  Book.findById( parseInt(request.params.id ))
   .then( book => {
     response.render('editBook', { book })
   }).catch(
@@ -48,12 +48,14 @@ router.get('/edit/:id', (request, response) => {
 
 router.post('/:id', (request, response) => {
   const Book = request.app.get('models').Book
-  Book.update(request.body,
-    {where: {
-      id: request.body.id,
-      title: 'title'} })
+
+  const { id } = request.params
+  const where = { id: parseInt( id ) }
+
+  Book.update( request.body, { where })
   .then( book => {
-    response.redirect('/books/' + book.id)
+    console.log( book )
+    response.redirect( `/books/${id}` )
   }).catch(
     error => response.send({
       error, message: error.message }) )
