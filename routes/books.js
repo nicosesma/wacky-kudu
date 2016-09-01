@@ -45,6 +45,7 @@ router.get('/edit/:id', (request, response) => {
 })
 
 
+
 router.post('/:id', (request, response) => {
   const Book = request.app.get('models').Book
   Book.update(request.params.id, {where: {id: request.params.id } })
@@ -55,8 +56,11 @@ router.post('/:id', (request, response) => {
       error, message: error.message }) )
 })
 
-router.delete('/:id', (request, response) => {
-  response.redirect('/books')
+router.get('/delete/:id', (request, response) => {
+  const Book = request.app.get('models').Book
+  Book.destroy({where: {id: request.params.id } })
+    .then( result => response.redirect('/books'))
+    .catch( error => res.send({ error, message: error.message }))
 })
 
 module.exports = router
