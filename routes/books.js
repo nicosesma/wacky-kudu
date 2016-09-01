@@ -48,7 +48,10 @@ router.get('/edit/:id', (request, response) => {
 
 router.post('/:id', (request, response) => {
   const Book = request.app.get('models').Book
-  Book.update(request.params.id, {where: {id: request.params.id } })
+  Book.update(request.body,
+    {where: {
+      id: request.body.id,
+      title: 'title'} })
   .then( book => {
     response.redirect('/books/' + book.id)
   }).catch(
