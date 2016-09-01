@@ -1,12 +1,22 @@
 var express = require('express')
 var router = express.Router()
 
+const PAGE_SIZE = 10
+
 router.get('/', (request, response) => {
   const { Book, Genre, Author } = request.app.get('models')
+  let page = Math.max( parseInt( request.query.page ) || 1, 1 )
 
-  Book.findAll({ include: [ Author, Genre ] })
-    .then( books => {
-      return response.render( 'books/list', { books })
+  Book.findAndCountAll({
+      include: [ Author, Genre ],
+      limit: PAGE_SIZE,
+      offset: PAGE_SIZE * (page - 1)
+    })
+    .then( result => {
+      const { rows: books, count } = result
+      const pages = count / PAGE_SIZE
+
+      return response.render( 'books/list', { books, count, pages, page })
     })
     .catch( error => response.send({ error, message: error.message }) )
 })
