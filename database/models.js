@@ -44,6 +44,8 @@ Borrow.belongsTo( Available )
 Borrow.belongsTo( User )
 Author.belongsToMany( Book, { through: 'bookAuthors' } )
 Genre.belongsToMany( Book, { through: 'bookGenres' } )
+Book.belongsToMany( Author, { through: 'bookAuthors' } )
+Book.belongsToMany( Genre, { through: 'bookGenres' } )
 
 sequelize.sync()
 

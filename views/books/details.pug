@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  h1= book.title
+
+  img(src=`${book.cover}`, alt="Book Cover", style="height: 250px; width: 150px;")
+
+  div
+    h5= Description
+    p= book.description
+
+  a(href=`/books/edit/${book.id}`) Edit Book
+
+  .clearfix
+    form.form-horizontal(method='get', id="delete-form" action=`/books/delete/${book.id}`)
+      fieldset
+        div
+          input.form-control(type='submit' value="Delete Book")
