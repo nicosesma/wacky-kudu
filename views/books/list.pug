@@ -3,6 +3,19 @@ extends ../layout
 block content
   h1 Books List
 
+  nav(aria-label='Page navigation')
+    ul.pagination
+      if page > 1
+        li
+          a(href=`?page=${page - 1}`, aria-label='Previous')
+            span(aria-hidden='true') &laquo;
+
+      if page < pages
+        li
+          a(href=`?page=${page + 1 }`, aria-label='Next')
+            span(aria-hidden='true') &raquo;
+
+
   table.table.table-striped
     thead
       tr
