@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  h1 Search Results
+
+  table.table.table-striped
+    thead
+      tr
+        th Title
+        th Authors
+        th Genres
+    tbody
+      each book in books
+        tr
+          td
+            a(href=`/books/${book.id}`)= book.title
+          //- td= book.authors.map( author => author.name ).join(', ')
+          //- td= book.genres.map( genre => genre.name ).join(', ')
