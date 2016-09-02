@@ -20,8 +20,6 @@ router.get('/', (request, response) => {
   ])
     .then( results => {
       console.log('2:', results[0] );
-      // const { rows: books } = results
-      // console.log('3:', books);
       const books = results[0]
       const authors = results[1]
       const genres = results[2]
