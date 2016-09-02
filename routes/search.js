@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-// Object.keys(data).map(k => data[k])
+
 router.get('/', (request, response) => {
   const Book = request.app.get('models').Book
   let search = request.query
@@ -10,11 +10,6 @@ router.get('/', (request, response) => {
   Book.findAll({
     where: { title: { ilike: '%' + searchOptions + '%' }}
   })
-    // .success( books => {
-    //   for( let i=0; i<books.length; i++){
-    //     console.log(books[i].title + " " + books[i].description);
-    //   }
-    // })
     .then( results => {
       console.log('2:', results );
       // const { rows: books } = results
@@ -24,9 +19,4 @@ router.get('/', (request, response) => {
     .catch( error => response.send({ error, message: error.message }))
 })
 
-// Project.findAll({where: {title: {like: '%' + x + '%'}, id: {gt: 10}}).success(function(projects) {
-//   for (var i=0; i<projects.length; i++) {
-//     console.log(projects[i].title + " " + projects[i].description);
-//   }
-// });
 module.exports = router
