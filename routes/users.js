@@ -31,5 +31,4 @@ router.get('users/signup', (request, response) => {
   response.render('signup')
 })
 
-
 module.exports = router
