@@ -3,9 +3,40 @@ extends ../layout
 block content
   h1 Add Book
 
-  form(action="/books", method="post") Add A Book!
-    input(type="text" name="title", value="Book Title")
-    input(type="text" name="description", value="Description")
-    input(type="text" name="cover", value="Cover url")
+  form.form-horizontal(action="/books", method="post")
+    .form-group
+      label(for='title') Title
+      input.form-control(type="text", name="title", placeholder="Book Title")
 
-    input(type="submit", value="Submit your book!")
+    .form-group
+      label(for='description') Description
+      input.form-control(type="text", name="description", placeholder="Description")
+
+    .form-group
+      label(for='cover') Cover Image URL
+      input.form-control(type="text", name="cover", placeholder="Cover url")
+
+    .form-group
+      label(for='new-author') New Author
+      input.form-control(type='text', name='new-author', placeholder='Author')
+      span.help-block Enter a new author's name here
+
+    .form-group
+      label(for='authors') Existing Authors
+
+    .form-group
+      select(name="authors", multiple='multiple')
+        each author in authors
+          option(value=`${author.id}`, label=`${author.name}`)
+      span.help-block Select from among authors already in our bookstore
+
+    .form-group
+      label(for='genres') Genres
+
+    .form-group
+      select(name='genres', multiple='multiple')
+        each genre in genres
+          option(value=`${genre.id}`, label=`${genre.name}`)
+
+    .form-group
+      button.btn.btn-default(type='submit') Submit your book!
