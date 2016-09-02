@@ -1,9 +1,11 @@
 const express = require('express')
 const path = require('path')
+const session = require('express-session')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const passport = require( 'passport')
 
 const routes = require('./routes/index')
 const users = require('./routes/users')
@@ -27,6 +29,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(session({ secret: 'keyboard cat', cookie: {} }))
+app.use(passport.initialize())
+
+app.use(passport.session())
 
 app.use('/', routes)
 app.use('/users', users)
