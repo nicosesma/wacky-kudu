@@ -2,9 +2,10 @@ extends layout
 
 block content
   .jumbotron
-      .container
+      .container.invisible
         h1 Welcome to Learner's Guild Library
         p Created by Nico, James and JRob in the eighth week. This website enables guilders the ability to checkout books in the Oakland library.
+
 
   .container
       // Example row of columns
@@ -14,16 +15,16 @@ block content
           p There are a number of books available in the LG library.
           p
             a.btn.btn-default(href='/books', role='button') View Library &raquo;
-        .col-md-4
-          h2 Checkout Books
-          p Let other Guilders know which books are available.
-          p
-            a.btn.btn-default(href='#', role='button') View details &raquo;
-        .col-md-4
-          h2 Responsive
-          p View books on your phone or on your computer.
-          p
-            a.btn.btn-default(href='#', role='button') View details &raquo;
+        //- .col-md-4
+        //-   h2 Checkout Books
+        //-   p Let other Guilders know which books are available.
+        //-   p
+        //-     a.btn.btn-default(href='#', role='button') View details &raquo;
+        //- .col-md-4
+        //-   h2 Responsive
+        //-   p View books on your phone or on your computer.
+        //-   p
+        //-     a.btn.btn-default(href='#', role='button') View details &raquo;
       hr
       footer
         p &copy; SioNo 2014

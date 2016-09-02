@@ -11,3 +11,13 @@ a {
   width: 70%;
   height:70%;
 }
+
+.jumbotron {
+  background-image: url("../images/guild_library.png");
+  background-size: cover;
+  background-repeat: no-repeat center center;
+}
+
+.invisible {
+  visibility: hidden;
+}
