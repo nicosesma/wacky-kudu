@@ -22,7 +22,17 @@ router.get('/', (request, response) => {
 })
 
 router.get('/add', (request, response) => {
-  response.render( 'books/form' )
+  const { Book, Genre, Author } = request.app.get('models')
+
+  Promise.all([
+    Author.findAll(),
+    Genre.findAll()
+  ])
+  .then( result => {
+    const [ authors, genres ] = result
+    response.render( 'books/form', { authors, genres })
+  })
+  .catch( error => response.render({ message: error.message }))
 })
 
 router.post('/', (request, response) => {
@@ -45,10 +55,17 @@ router.get('/:id', (request, response) => {
 
 // updating book details
 router.get('/edit/:id', (request, response) => {
-  const Book = request.app.get('models').Book
-  Book.findById( parseInt(request.params.id ))
-  .then( book => {
-    response.render('editBook', { book })
+  const { Book, Genre, Author } = request.app.get('models')
+
+  Promise.all([
+    Book.findById( parseInt(request.params.id )),
+    Author.findAll(),
+    Genre.findAll()
+  ])
+  .then( result => {
+    const [ book, authors, genres ] = result
+
+    response.render('editBook', { book, authors, genres })
   }).catch(
     error => response.send({
       error, message: error.message }) )
