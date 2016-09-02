@@ -14,7 +14,7 @@ Creating this web application will provide exposure to:
 
 ## Specifications
 
-- [ ] User can signup/ login to use the website
+- [X] User can signup/ login to use the website
 - [ ] Any signed in user can add books into the system
 - [x] Books entered in the system are listed on the lists page, in pages of 10
 - [ ] Users can search for books by title OR by author OR by genre, and results will be presented on a search results page

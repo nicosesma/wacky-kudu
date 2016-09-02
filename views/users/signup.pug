@@ -1,11 +1,20 @@
-extend layout
+extends ../layout
 
 block content
   h1 Sign Up
 
-  form(action="/books", method="post") 
-    input(type="text" name="title", value="Book Title")
-    input(type="text" name="description", value="Description")
-    input(type="text" name="cover", value="Cover url")
+  form(action="/users/signup", method="post")
+    div
+      labe(for='username')
+      input(type="text" name="username", placeholder='User Name')
 
-    input(type="submit", value="Sign Up!")
+    div
+      labe(for='email')
+      input(type="text" name="email", placeholder='Email Address')
+
+    div
+      labe(for='password')
+      input(type="password" name="password", placeholder='Password')
+
+    div
+      button(type='submit') Sign Up

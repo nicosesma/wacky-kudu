@@ -1,20 +1,24 @@
 const passport = require('passport')
-const localStrategy = require('passport-local').Strategy
+const LocalStrategy = require('passport-local').Strategy
 const Sequelize = require( 'sequelize' )
 const bcrypt = require('bcrypt')
 
-const findUser = ( email, password ) => {
+const User = require('./models').User
 
-  const { email, password } = request.params
-  const where = { email, password }
-
-  return User.findOne( where)
+const OPTIONS = {
+  usernameField: 'email'
 }
 
-const strategy = new LocalStrategy( (email,password, done) => {
+const findUser = ( email, password ) => {
+  const where = { email, password }
+
+  return User.findOne({ where })
+}
+
+const strategy = new LocalStrategy( OPTIONS, ( email, password, done ) => {
   findUser( email, password)
     .then( user => {
-      if(!user){
+      if( !user ){
         return done( null, false, { message: "WRONG! Check password or email" })
       } else {
         done( null, user)
@@ -22,7 +26,7 @@ const strategy = new LocalStrategy( (email,password, done) => {
     }).catch( error => done( err ))
 })
 
-passport.use (strategy)
+passport.use( strategy )
 
 passport.serializeUser( ( user, done ) => done( null, user.id ) )
 
