@@ -12,8 +12,6 @@ block content
         tr
           td
             a(href=`/books/${book.id}`)= book.title
-          //- td= book.authors.map( author => author.name ).join(', ')
-          //- td= book.genres.map( genre => genre.name ).join(', ')
       each author in authors
         tr
           td= author.name
