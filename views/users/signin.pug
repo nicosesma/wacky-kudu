@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  h1 Sign In
+
+  form(action="/users/signin", method="post")
+    div
+      labe(for='email')
+      input(type="text" name="email", placeholder='Email Address')
+
+    div
+      labe(for='password')
+      input(type="password" name="password", placeholder='Password')
+
+    div
+      button(type='submit') Sign In

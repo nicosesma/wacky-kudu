@@ -1,15 +1,17 @@
 const express = require('express')
 const path = require('path')
+const session = require('express-session')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
+const passport = require( 'passport')
 
 const routes = require('./routes/index')
 const users = require('./routes/users')
 const books = require('./routes/books')
-const signup = require('./routes/signup')
-const signin = require('./routes/signin')
+// const signup = require('./routes/signup')
+// const signin = require('./routes/signin')
 const test = require('./routes/test')
 const models = require( './database/models' )
 
@@ -27,12 +29,16 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(session({ secret: 'keyboard cat', cookie: {} }))
+app.use(passport.initialize())
+
+app.use(passport.session())
 
 app.use('/', routes)
 app.use('/users', users)
 app.use('/books', books)
-app.use('/signup', signup)
-app.use('/signin', signin)
+// app.use('/signup', signup)
+// app.use('/signin', signin)
 app.use('/test', test)
 
 // catch 404 and forward to error handler

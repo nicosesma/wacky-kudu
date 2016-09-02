@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  h1 Sign Up
+
+  form(action="/users/signup", method="post")
+    div
+      labe(for='username')
+      input(type="text" name="username", placeholder='User Name')
+
+    div
+      labe(for='email')
+      input(type="text" name="email", placeholder='Email Address')
+
+    div
+      labe(for='password')
+      input(type="password" name="password", placeholder='Password')
+
+    div
+      button(type='submit') Sign Up

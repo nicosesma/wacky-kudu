@@ -1,29 +1,45 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
+
+const passport = require( '../database/passport' )
+const AUTH_OPTIONS = {
+  successRedirect: '/',
+  failureRedirect: '/users/signin'
+}
 
 /* GET users listing. */
 router.get('/', function(request, response) {
-  response.render('users');
-});
+  response.render( 'users/home')
+})
 
-router.get('/:id', function(request, response) {
-  response.render('profile');
-});
+router.get('/profile/:id', function(request, response) {
+  const User = request.app.get('models').User
+
+  User.findById( request.params.id )
+    .then( user => response.render( 'users/profile', { user }))
+    .catch( error => response.send({ error, message: error.message }) )
+})
 
 router.get('/edit/:id', function(request, response) {
-  response.render('editUser');
-});
-
-router.post('/:id', function(request, response) {
-  response.redirect('/${:id}')
+  response.render('editUser')
 })
 
 router.get('/signin', (request, response) => {
-  response.render('signin')
+  response.render('users/signin')
 })
+router.post( '/signin', passport.authenticate( 'local', AUTH_OPTIONS ))
 
 router.get('/signup', (request, response) => {
-  response.render('signup')
+  response.render('users/signup')
 })
 
-module.exports = router;
+router.post( '/signup', (request, response) => {
+  const User = request.app.get('models').User
+
+  User.create( request.body )
+    .then( result => response.redirect( `/users/profile/${result.id}` ))
+    .catch( error => response.send({ error, message: error.message }) )
+
+})
+
+module.exports = router
