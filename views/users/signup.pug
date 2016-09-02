@@ -1,0 +1,11 @@
+extend layout
+
+block content
+  h1 Sign Up
+
+  form(action="/books", method="post") 
+    input(type="text" name="title", value="Book Title")
+    input(type="text" name="description", value="Description")
+    input(type="text" name="cover", value="Cover url")
+
+    input(type="submit", value="Sign Up!")
