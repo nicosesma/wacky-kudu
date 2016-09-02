@@ -6,9 +6,7 @@ block content
   table.table.table-striped
     thead
       tr
-        th Title
-        th Authors
-        th Genres
+        th Results
     tbody
       each book in books
         tr
@@ -16,3 +14,9 @@ block content
             a(href=`/books/${book.id}`)= book.title
           //- td= book.authors.map( author => author.name ).join(', ')
           //- td= book.genres.map( genre => genre.name ).join(', ')
+      each author in authors
+        tr
+          td= author.name
+      each genre in genres
+        tr
+          td= genre.name
