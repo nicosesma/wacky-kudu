@@ -6,7 +6,6 @@ router.get('/', (request, response) => {
   let search = request.query
   let searchOptions = Object.keys(search).map(v => search[v])
 
-  console.log('h:', searchOptions)
   Promise.all([
     Book.findAll({
       where: { title: { ilike: '%' + searchOptions + '%' }}
@@ -19,7 +18,6 @@ router.get('/', (request, response) => {
     })
   ])
     .then( results => {
-      console.log('2:', results[0] );
       const books = results[0]
       const authors = results[1]
       const genres = results[2]
