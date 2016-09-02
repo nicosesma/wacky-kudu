@@ -14,6 +14,7 @@ const books = require('./routes/books')
 // const signin = require('./routes/signin')
 const test = require('./routes/test')
 const models = require( './database/models' )
+const search = require('./routes/search')
 
 const app = express()
 
@@ -40,6 +41,7 @@ app.use('/books', books)
 // app.use('/signup', signup)
 // app.use('/signin', signin)
 app.use('/test', test)
+app.use('/search', search)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -10,6 +10,7 @@ const AUTH_OPTIONS = {
 /* GET users listing. */
 router.get('/', function(request, response) {
   response.render( 'users/home')
+
 })
 
 router.get('/profile/:id', function(request, response) {
