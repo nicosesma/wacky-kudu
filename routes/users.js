@@ -23,13 +23,12 @@ router.post('/:id', function(request, response) {
   response.redirect('/${:id}')
 })
 
-router.get('users/signin', (request, response) => {
+router.get('/signin', (request, response) => {
   response.render('signin')
 })
 
-router.get('users/signup', (request, response) => {
+router.get('/signup', (request, response) => {
   response.render('signup')
 })
-
 
 module.exports = router
