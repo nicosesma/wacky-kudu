@@ -16,16 +16,16 @@ Creating this web application will provide exposure to:
 
 - [ ] User can signup/ login to use the website
 - [ ] Any signed in user can add books into the system
-- [ ] Books entered in the system are listed on the lists page, in pages of 10
+- [x] Books entered in the system are listed on the lists page, in pages of 10
 - [ ] Users can search for books by title OR by author OR by genre, and results will be presented on a search results page
-- [ ] Users can view book details on a details page
+- [x] Users can view book details on a details page
 - [ ] Users can update book details on edit page linked to from the details page
-- [ ] Users can delete the book entry from details page
+- [x] Users can delete the book entry from details page
 - [ ] Users can update their profile information such as name and email
 - [ ] Users can checkout a book  
 - [ ] Users can return a book
 - [ ] Users can see the current availability of books in the library
-- [ ] All code submissions are peer reviewed via GitHub PR and master is always in a stable state
+- [x] All code submissions are peer reviewed via GitHub PR and master is always in a stable state
 
 
 ## Quality Rubric

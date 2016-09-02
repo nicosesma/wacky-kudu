@@ -15,7 +15,15 @@ router.get('/edit/:id', function(request, response) {
 });
 
 router.post('/:id', function(request, response) {
-  response.redirect('/${:id}');
-});
+  response.redirect('/${:id}')
+})
+
+router.get('/signin', (request, response) => {
+  response.render('signin')
+})
+
+router.get('/signup', (request, response) => {
+  response.render('signup')
+})
 
 module.exports = router;
